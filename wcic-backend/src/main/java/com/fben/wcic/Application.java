@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
-	//comment to test commit
 	//private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
 	public static void main(String[] args){
