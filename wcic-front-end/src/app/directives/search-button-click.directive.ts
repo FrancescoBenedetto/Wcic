@@ -2,7 +2,7 @@
  * New typescript file
  */
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
-import { Ingredient } from '../ingredient';
+import { Ingredient } from '../model/ingredient';
 
 @Directive({ selector: '[searchButtonClick]' })
 

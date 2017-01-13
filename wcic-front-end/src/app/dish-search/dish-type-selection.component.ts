@@ -24,13 +24,13 @@ export class DishTypeSelectionComponent implements OnInit {
     //this.type2state = new Map<string, boolean>();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.dishService.getDishTypes()
     .subscribe(types => types.forEach(type => this.types.push({name:type, state:true}) ));
     //.subscribe(types => types.forEach( type => this.type2state.set(type, true) ) );
   }
 
-  changeDetailState() {
+  changeDetailState(): void {
     this.hide ? this.hide = false : this.hide = true;
   }
 
