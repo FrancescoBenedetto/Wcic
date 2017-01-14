@@ -1,7 +1,6 @@
 package com.fben.wcic.controllers;
 
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +27,6 @@ public class DishYouCanCookCountController {
     									 @RequestParam(value="atLeast", defaultValue="1") Integer atLeast
     									 )
     {
-    	System.out.println("Qui");
 		// TODO: validate input
 	 return repository.countMatchingDishes(ingredients, types, atLeast).intValue();
 	}
