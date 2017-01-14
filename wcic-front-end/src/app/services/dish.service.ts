@@ -7,6 +7,7 @@ import { Http, URLSearchParams } from '@angular/http';
 import { Dish } from '../model/dish';
 import { Ingredient } from '../model/ingredient';
 import { CommonService } from './common-service.service';
+import { DishSearchObject } from '../dish-search/dishSearchObject'
 import 'rxjs/add/operator/map';
 
 
@@ -21,13 +22,13 @@ export class DishService extends CommonService {
     this.dishBaseUrl = this.baseUrl + '/' + this.dishRoot;
   }
 
-  getDishes(ingredients: Ingredient[], atLeast: number, dishTypes: string[], page: number) {
+  getDishes(searchObject: DishSearchObject) {
     let methodName = 'search/getDishes';
     let params = new URLSearchParams();
-    params.set('ingredients', ingredients.map(ingredient => ingredient.name).toString());
-    params.set('types', dishTypes.toString());
-    params.set('atLeast', atLeast.toString());
-    params.set('page', page.toString());
+    params.set('ingredients', searchObject.getIngredients().map(ingredient => ingredient.name).toString());
+    params.set('types', searchObject.getTypes().toString());
+    params.set('atLeast', searchObject.getAtLeast().toString());
+    params.set('page', searchObject.getPageNumber().toString());
 
     return this.http.get(
       this.dishBaseUrl + '/' + methodName, {search: params})
@@ -40,13 +41,13 @@ export class DishService extends CommonService {
     .map(response => <string[]> response.json());
   }
 
-  getTotalDishNumber(ingredients: Ingredient[], atLeast: number, dishTypes: string[]) {
+  getTotalDishNumber(searchObject: DishSearchObject) {
     let methodName = 'search/countMatchingDishes';
     let params = new URLSearchParams();
-    params.set('ingredients', ingredients.map(ingredient => ingredient.name).toString());
-    params.set('types', dishTypes.toString());
-    params.set('atLeast', atLeast.toString());
-
+    params.set('ingredients', searchObject.getIngredients().map(ingredient => ingredient.name).toString());
+    params.set('types', searchObject.getTypes().toString());
+    params.set('atLeast', searchObject.getAtLeast().toString());
+    
     return this.http.get(this.dishBaseUrl + '/' + methodName, { search: params })
     .map(response => <number> response.json());
   }

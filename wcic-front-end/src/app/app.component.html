@@ -4,10 +4,10 @@
 <div class="w-row">
 	<div class="left-column w-col w-col-3">
 		<div class="left-col-header"></div>
-		<dish-search #dishSearch (triggerDishSearch)="listComponent.searchRecipes($event)"></dish-search>
+		<dish-search #dishSearch (searchCompleted)="pager.triggerItemsCount($event);"></dish-search>
 	</div>
 	<div class="w-col w-col-9">
-		<dish-list #listComponent (done)="pager.triggerItemsCount($event);"></dish-list>
+		<dish-list #listComponent [dishes]="dishSearch.dishes"></dish-list>
 		<pager #pager (pageChanged)="dishSearch.changePage($event)"></pager>
 	</div>
 </div>

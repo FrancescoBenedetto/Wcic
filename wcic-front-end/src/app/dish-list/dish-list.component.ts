@@ -1,8 +1,7 @@
 /**
  * New typescript file
  */
-import { Component, EventEmitter, Output } from '@angular/core';
-import { DishService } from '../services/dish.service';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { Dish } from '../model/dish';
 
 @Component({
@@ -13,24 +12,9 @@ import { Dish } from '../model/dish';
 
 export class DishListComponent {
 
-  dishes: Dish[];
+  constructor() {}
 
-  constructor(private dishService: DishService) {
-    this.dishes = [];
-   }
-
-   @Output() done = new EventEmitter();
-
-  searchRecipes(params): void {
-    this.dishService
-      .getDishes(params.selectedIngredients, params.atLeast, params.dishType, params.page)
-      .subscribe(dishes => {
-        this.dishes = dishes
-        if(params.page === 1) {
-          this.done.emit(params);
-        }
-      });
-  }
+   @Input('dishes') dishes: Dish[];
 
   getDishes(): Dish[] {
     return this.dishes;

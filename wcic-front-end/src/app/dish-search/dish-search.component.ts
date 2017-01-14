@@ -4,7 +4,9 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
+import { Dish } from '../model/dish';
 import { Ingredient } from '../model/ingredient';
+import { DishSearchObject } from './dishSearchObject'
 import { DishService } from '../services/dish.service';
 
 @Component({
@@ -14,39 +16,35 @@ import { DishService } from '../services/dish.service';
 })
 export class DishSearchComponent {
 
-  ingredients: Ingredient[];
-  dishType: string;
-  atLeast: number;
-  page: number;
+  private searchObject: DishSearchObject;
+  dishes: Dish[];
 
-  constructor(private dishService: DishService) {}
-
-  @Output() triggerDishSearch = new EventEmitter();
-
-  searchDishes(selectedIngredients: Ingredient[], atLeast: number, dishType: string, page: number): void {
-    this.setSearchParams(selectedIngredients, atLeast, dishType, page);
-    this.triggerDishSearch.emit({
-      selectedIngredients: selectedIngredients,
-      atLeast: atLeast,
-      dishType: dishType,
-      page: page
-    })
+  constructor(private dishService: DishService) {
+    this.searchObject = new DishSearchObject();
+    this.dishes = [];
   }
 
-  setSearchParams(selectedIngredients: Ingredient[], atLeast: number, dishType: string, page: number): void {
-    this.ingredients = selectedIngredients;
-    this.atLeast = atLeast;
-    this.dishType = dishType;
-    this.page = page;
+  @Output() searchCompleted = new EventEmitter();
+
+  onDishSearchButtonClick(selectedIngredients: Ingredient[], atLeast: number, dishTypes: string[], page: number):void {
+    this.searchObject.setSearchParams(selectedIngredients, atLeast, dishTypes, page);
+      this.searchDishes(false);
   }
 
-  changePage(page: number) : void{
-    this.page = page;
-    this.triggerDishSearch.emit({
-      selectedIngredients: this.ingredients,
-      atLeast: this.atLeast,
-      dishType: this.dishType,
-      page: this.page
-    })
+  changePage(page: number):void {
+    this.searchObject.setPage(page);
+    this.searchDishes(true);
   }
+
+  searchDishes(isAPageChange:boolean):void {
+    this.dishService
+      .getDishes(this.searchObject)
+      .subscribe(dishes => {
+        this.dishes = dishes;
+        if(!isAPageChange){ // pager has to init his pages number asking it to the server
+          this.searchCompleted.emit(this.searchObject);
+        }
+      });
+  }
+
 }

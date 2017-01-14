@@ -2,8 +2,7 @@
 <selected-ingredients #si></selected-ingredients>
 <dish-type-selection #sel></dish-type-selection>
 <div class="search-button-container">
-  <!--  <input [disabled]="si.getSelectedIngredients().length === 0" class="w-button search-button" data-wait="ingredient..." value="Cerca Ricette" type="submit"> -->
-  <input [disabled]="si.getSelectedIngredients().length === 0" class="btn btn-primary" (click)="searchDishes(
+  <input [disabled]="si.getSelectedIngredients().length === 0" class="btn btn-primary" (click)="onDishSearchButtonClick(
 si.getSelectedIngredients(),
 si.atLeast,
 sel.getCheckedTypes(),

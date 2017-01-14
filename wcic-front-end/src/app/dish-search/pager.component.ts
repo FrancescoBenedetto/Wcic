@@ -22,8 +22,8 @@ export class PagerComponent {
 
   @Output() pageChanged = new EventEmitter<number>();
 
-  triggerItemsCount(params): void {
-    this.dishService.getTotalDishNumber(params.selectedIngredients, params.atLeast, params.dishType)
+  triggerItemsCount(searchObject): void {
+    this.dishService.getTotalDishNumber(searchObject)
     .subscribe(dishNumber => this.initParams(dishNumber));
   }
 
