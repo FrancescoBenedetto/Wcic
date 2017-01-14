@@ -1,5 +1,6 @@
 package com.fben.wcic.persistence;
 
+import java.math.BigInteger;
 import java.util.List;
 
 
@@ -42,6 +43,23 @@ public interface DishRepository extends PagingAndSortingRepository<Dish, Long>{
 			Integer atLeast,
 			Integer from,
 			Integer offset);
+	
+	@Query(value="SELECT COUNT(*) " +
+			" FROM ("+
+			" SELECT recipe_composition.id_dish, COUNT(id_dish) as ings_matched"+ 
+			" FROM recipe_composition, ingredient, dish"+
+			" WHERE ingredient.name IN ?1"+ 
+		 	" AND ingredient.id = recipe_composition.id_ingredient"+
+		 	" AND dish.id = recipe_composition.id_dish"+
+			" AND dish.type IN ?2"+
+		 	" GROUP BY recipe_composition.id_dish ) as counting_table"+
+		 	" WHERE counting_table.ings_matched >= ?3",
+			nativeQuery=true)
+	public BigInteger countMatchingDishes(
+		    String[] ingredients,
+			String[] types,
+			Integer atLeast);
+	
 	
 	@Query(value="SELECT DISTINCT d.type FROM Dish d")
 	public List<String> getDishTypes();
