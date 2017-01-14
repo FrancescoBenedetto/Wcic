@@ -1,7 +1,7 @@
 /**
  * New typescript file
  */
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { DishService } from '../services/dish.service';
 import { Dish } from '../model/dish';
 
@@ -19,11 +19,21 @@ export class DishListComponent {
     this.dishes = [];
    }
 
+   @Output() done = new EventEmitter();
 
   searchRecipes(params): void {
     this.dishService
       .getDishes(params.selectedIngredients, params.atLeast, params.dishType, params.page)
-      .subscribe(dishes => this.dishes = dishes);
+      .subscribe(dishes => {
+        this.dishes = dishes
+        if(params.page === 1) {
+          this.done.emit(params);
+        }
+      });
+  }
+
+  getDishes(): Dish[] {
+    return this.dishes;
   }
 
 }

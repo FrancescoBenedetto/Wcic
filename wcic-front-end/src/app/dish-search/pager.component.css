@@ -1,0 +1,18 @@
+.hide {
+  display: none;
+}
+
+.no-click {
+    pointer-events: none;
+}
+
+.pager-container {
+  align-content: center;
+  margin-left: 50%;
+  margin-top: 30px;
+}
+
+.disable-a {
+   pointer-events: none;
+   cursor: default;
+}

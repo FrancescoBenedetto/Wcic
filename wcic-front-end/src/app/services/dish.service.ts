@@ -39,4 +39,15 @@ export class DishService extends CommonService {
     return this.http.get(this.dishBaseUrl + '/' + methodName)
     .map(response => <string[]> response.json());
   }
+
+  getTotalDishNumber(ingredients: Ingredient[], atLeast: number, dishTypes: string[]) {
+    let methodName = 'search/countMatchingDishes';
+    let params = new URLSearchParams();
+    params.set('ingredients', ingredients.map(ingredient => ingredient.name).toString());
+    params.set('types', dishTypes.toString());
+    params.set('atLeast', atLeast.toString());
+
+    return this.http.get(this.dishBaseUrl + '/' + methodName, { search: params })
+    .map(response => <number> response.json());
+  }
 }

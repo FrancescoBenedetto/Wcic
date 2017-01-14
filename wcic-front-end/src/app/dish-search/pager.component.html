@@ -1,9 +1,12 @@
-<div class="pager-container">
+<div *ngIf="currentPages.length > 0" class="pager-container">
   <ul class="pagination">
-    <li class="active"><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
+    <li [class.disabled]="currentPage === 1" (click)="goLeft()">
+      <a href="#" [class.disable-a]="currentPage === 1">
+        <</a>
+    </li>
+    <li (click)="setCurrentPage(pageNumber)" *ngFor="let pageNumber of currentPages" [class.active]="pageNumber === currentPage">
+      <a href="#" [class.disable-a]="pageNumber === currentPage">{{pageNumber}}</a>
+    </li>
+    <li [class.disabled]="currentPage === pages"><a href="#" [class.disable-a]="currentPage === pages" (click)="goRight()">></a></li>
   </ul>
 </div>

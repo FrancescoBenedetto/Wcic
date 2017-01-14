@@ -9,6 +9,7 @@ import { IngredientSearchComponent } from './dish-search/ingredient-search.compo
 import { SelectedIngredientsComponent } from './dish-search/selected-ingredients.component';
 import { DishSearchComponent } from './dish-search/dish-search.component';
 import { DishTypeSelectionComponent } from './dish-search/dish-type-selection.component';
+import { PagerComponent } from './dish-search/pager.component';
 import { AppComponent } from './app.component';
 
 import { DishService } from './services/dish.service';
@@ -33,6 +34,7 @@ import { InMemoryDataService }  from './utils/in-memory-data.service';
     SelectedIngredientsComponent,
     DishTypeSelectionComponent,
     DishSearchComponent,
+    PagerComponent,
     TruncatePipe,
     UppercaseFirst
   ],
