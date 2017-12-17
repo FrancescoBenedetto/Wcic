@@ -1,0 +1,12 @@
+SELECT *
+	FROM (
+
+    SELECT recipe_composition.id_dish, COUNT(id_dish) as ings_matched
+    FROM dish, ingredient, recipe_composition 
+    WHERE ingredient.name IN ('Panna Liquida', 'Liquore Allo Zabaglione', 'Vanil Zucca') AND 		      dish.id = recipe_composition.id_dish AND ingredient.id = 												recipe_composition.id_ingredient GROUP BY `recipe_composition`.`id_dish`
+        
+        ) as counting_table,
+        dish
+    WHERE counting_table.ings_matched >= 2 AND counting_table.id_dish=dish.id
+    
+

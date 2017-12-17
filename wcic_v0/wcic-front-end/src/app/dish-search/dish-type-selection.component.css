@@ -1,0 +1,16 @@
+div.dish-type-selection-container {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.label-advanced-search {
+  cursor: pointer;
+}
+
+.advanced-search-container {
+  margin-top: 20px;
+}
+
+.type-selection-title {
+  margin-bottom: 10px;
+}

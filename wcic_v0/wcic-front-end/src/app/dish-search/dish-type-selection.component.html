@@ -1,0 +1,12 @@
+<div class="advanced-search-container">
+  <button class="label-advanced-search btn btn-default" (click)="changeDetailState()">Ricerca Avanzata</button>
+  <div class="dish-type-selection-container" [hidden]="hide">
+    <fieldset>
+      <legend class="type-selection-title">Seleziona i tipi di piatto</legend>
+      <div class="checkbox-item-container" *ngFor="let type of types">
+        <input type="checkbox" [name]="type.name" [value]="type.name" [checked]="type.state" (change)="changeState($event.target.value)" /> {{type.name}}
+        <br />
+      </div>
+    </fieldset>
+  </div>
+</div>

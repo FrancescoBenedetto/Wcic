@@ -1,0 +1,12 @@
+<div>
+	<h1 class="result-header">Risultati</h1>
+</div>
+<div>
+	<div class="dynamic-list-wrapper w-dyn-list">
+		<div class="w-dyn-items">
+			<dish-list-element *ngFor="let dish of dishes" [dish]="dish">
+			</dish-list-element>
+
+		</div>
+	</div>
+</div>
