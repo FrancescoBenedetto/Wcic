@@ -1,6 +1,7 @@
 package my.vaadin.app;
 
 import java.io.File;
+import java.util.List;
 
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.FileResource;
@@ -10,29 +11,42 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Link;
+import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 import com.wcic.model.Dish;
+import com.wcic.model.Ingredient;
 
 public class ResultContainer extends HorizontalLayout{
+	
+	private final String difficultyDetailImgLocation = "src/main/webapp/VAADIN/themes/mytheme/difficulty_lvl_1.png";
+	private final String personsDetailImgLocation = "src/main/webapp/VAADIN/themes/mytheme/persons.png";
+	private final String timeDetailImgLocation = "src/main/webapp/VAADIN/themes/mytheme/clock.png";
 
+	
 	public ResultContainer(Dish dish) {
 		super();
+		this.setWidth(100, Unit.PERCENTAGE);
 		VerticalLayout dishInfoContainer = createDishInfoComponent(
 				dish.getDishType(),
 				dish.getDishName(),
+				dish.getIngredients(),
 				dish.getDifficulty(),
+				dish.getPersons(),
 				dish.getTime());
 		this.addComponent(dishInfoContainer);
 		VerticalLayout linkLayout = createLinkComponent(dish.getHyperlink(), dish.getWebsiteName());
 		this.addComponent(linkLayout);
 		this.setComponentAlignment(linkLayout, Alignment.MIDDLE_CENTER);
+		this.setExpandRatio(dishInfoContainer, 2);
+		this.setExpandRatio(linkLayout, 1);
 	}
 
-	private VerticalLayout createDishInfoComponent(String dishType, String dishName, String difficulty, String time) {
+	private VerticalLayout createDishInfoComponent(String dishType, String dishName, List<Ingredient> ingredients, String difficulty, String persons, String time) {
 		VerticalLayout dishInfoContainer = new VerticalLayout();
 		dishInfoContainer.addComponent(createDishTypeView(dishType));
 		dishInfoContainer.addComponent(createDishNameView(dishName));
-		dishInfoContainer.addComponent(createDetailsContainer(difficulty, time));
+		dishInfoContainer.addComponent(createIngredientsContainer(ingredients));
+		dishInfoContainer.addComponent(createDetailsContainer(difficulty, persons, time));
 		return dishInfoContainer;
 	}
 
@@ -58,23 +72,45 @@ public class ResultContainer extends HorizontalLayout{
 		return dishNameLabel;
 	}
 	
-	private HorizontalLayout createDetailsContainer(String difficulty, String time) {
+	private CssLayout createIngredientsContainer(List<Ingredient> ingredients) {
+		CssLayout ingredientsContainer = new CssLayout();
+		for(Ingredient ingredient: ingredients) {
+			Label label = new Label(" • " + ingredient.getName());
+			label.setSizeUndefined();
+			label.setStyleName("dish-ingredient");
+			ingredientsContainer.addComponent(label);
+		}
+		return ingredientsContainer;
+	}
+	
+	
+	
+	private HorizontalLayout createDetailsContainer(String difficulty, String persons, String time) {
 		HorizontalLayout hv = new HorizontalLayout();
-		CssLayout difficultyLayout = new CssLayout();
-		Label difficultyLabel = new Label(difficulty);
-		difficultyLabel.setStyleName("dish-detail");
-		FileResource resource = new FileResource(new File(
-                "src/main/webapp/VAADIN/themes/mytheme/difficulty_lvl_1.png"));
+		hv.addStyleName("details-container");
+		CssLayout difficultyLayout = createDetail("difficulty", difficulty, difficultyDetailImgLocation);
+		CssLayout personsLayout = createDetail("persons", persons, personsDetailImgLocation);
+		CssLayout timeLayout = createDetail("time", time, timeDetailImgLocation);
+		hv.addComponent(difficultyLayout);
+		hv.addComponent(personsLayout);
+		hv.addComponent(timeLayout);
+		return hv;
+	}
+	
+	private CssLayout createDetail(String detailName, String detailValue, String imgLocation) {
+		CssLayout layout = new CssLayout();
+		Label detailLabel = new Label(detailName + ":");
+		Label detailValueLabel = new Label(detailValue);
+		detailLabel.setStyleName("dish-detail");
+		detailValueLabel.setStyleName("dish-detail-value");
+		FileResource resource = new FileResource(new File(imgLocation));
 		Image image = new Image(null,resource);
 		image.setHeight(10, Unit.PERCENTAGE);
 		image.setWidth(10, Unit.PERCENTAGE);
-		difficultyLayout.addComponent(image);
-		difficultyLayout.addComponent(difficultyLabel);
-		//Label timeLabel = new Label(time);
-		//timeLabel.setStyleName("dish-detail");
-		hv.addComponent(difficultyLayout);
-		//hv.addComponent(timeLabel);
-		return hv;
+		layout.addComponent(image);
+		layout.addComponent(detailLabel);
+		layout.addComponent(detailValueLabel);
+		return layout;
 	}
 		
  }

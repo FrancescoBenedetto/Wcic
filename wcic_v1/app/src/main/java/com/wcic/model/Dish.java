@@ -1,36 +1,40 @@
 package com.wcic.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Dish {
 
-	private String dishType, dishName, difficulty, time, hyperlink, websiteName;
-	private ArrayList<Ingredient> ingredients;
+	private String dishType, dishName, difficulty, persons, time, hyperlink, websiteName;
+	private List<Ingredient> ingredients;
 
 
 
 
 
 	public Dish(String dishType, String dishName, String difficulty,
-			String time, String hyperlink, String websiteName) {
+			String persons, String time, String hyperlink, String websiteName) {
 		this.dishType = dishType;
 		this.dishName = dishName;
 		this.difficulty = difficulty;
+		this.persons = persons;
 		this.time = time;
 		this.hyperlink = hyperlink;
 		this.websiteName = websiteName;
+		this.ingredients = new ArrayList<Ingredient>();
 	}
 	
-	public ArrayList<Ingredient> getIngredients() {
-		return ingredients;
+	public List<Ingredient> getIngredients() {
+		return this.ingredients;
 	}
 
-
-
-	public void setIngredients(ArrayList<Ingredient> ingredients) {
+	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
 	
+	public void addIngredient(Ingredient ingredient) {
+		this.ingredients.add(ingredient);
+	}
 	
 
 	public String getDishType() {
@@ -55,6 +59,14 @@ public class Dish {
 
 	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
+	}
+
+	public String getPersons() {
+		return persons;
+	}
+
+	public void setPersons(String persons) {
+		this.persons = persons;
 	}
 
 	public String getTime() {

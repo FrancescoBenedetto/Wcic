@@ -15,6 +15,7 @@ public class IngredientsContainerComponent extends VerticalLayout{
 		this.addIngredient(new IngredientPanel("ingredient1"));
 		this.addIngredient(new IngredientPanel("ingredient2"));
 		this.addIngredient(new IngredientPanel("loooooooooooooooooooooooooooooongIngredient"));
+		this.addIngredient(new IngredientPanel("loooooooooooooooooooooooooooooongIngredient"));
 
 
 	}

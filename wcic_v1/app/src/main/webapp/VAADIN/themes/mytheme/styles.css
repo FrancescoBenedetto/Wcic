@@ -2127,19 +2127,19 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme .v-button-friendly {
 	height: 37px;
 	padding: 0 16px;
-	color: #eaf4e9;
+	color: #edf4fa;
 	font-weight: 400;
 	
 	
 	border-radius: 4px;
-	border: 1px solid #227719;
-	border-top-color: #257d1a;
-	border-bottom-color: #1e6b15;
-	background-color: #2c9720;
-	background-image: -webkit-linear-gradient(top, #2f9f22 2%, #26881b 98%);
-	background-image: linear-gradient(to bottom,#2f9f22 2%, #26881b 98%);
-	-webkit-box-shadow: inset 0 1px 0 #46b33a, inset 0 -1px 0 #26811b, 0 2px 3px rgba(0, 0, 0, 0.05);
-	box-shadow: inset 0 1px 0 #46b33a, inset 0 -1px 0 #26811b, 0 2px 3px rgba(0, 0, 0, 0.05);
+	border: 1px solid #146ec9;
+	border-top-color: #1675c9;
+	border-bottom-color: #1161c0;
+	background-color: #1a8cff;
+	background-image: -webkit-linear-gradient(top, #1c95ff 2%, #167cf4 98%);
+	background-image: linear-gradient(to bottom,#1c95ff 2%, #167cf4 98%);
+	-webkit-box-shadow: inset 0 1px 0 #50a6ff, inset 0 -1px 0 #1678ea, 0 2px 3px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 1px 0 #50a6ff, inset 0 -1px 0 #1678ea, 0 2px 3px rgba(0, 0, 0, 0.05);
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05);
 }
 
@@ -2152,7 +2152,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .mytheme .v-button-friendly:hover:after {
-	background-color: rgba(65, 211, 48, 0.1);
+	background-color: rgba(102, 178, 255, 0.1);
 }
 
 .mytheme .v-button-friendly:focus:after {
@@ -2162,7 +2162,7 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .mytheme .v-button-friendly:active:after {
-	background-color: rgba(14, 86, 6, 0.2);
+	background-color: rgba(0, 70, 141, 0.2);
 }
 
 .mytheme .v-button-danger {
@@ -11052,7 +11052,7 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme .v-label-success, .mytheme .v-label-failure {
 	background: white;
 	color: #474747;
-	border: 2px solid #2c9720;
+	border: 2px solid #1a8cff;
 	border-radius: 4px;
 	padding: 7px 19px 7px 37px;
 	font-weight: 400;
@@ -11064,7 +11064,7 @@ div.v-layout.v-horizontal.v-widget {
 	content: "\f00c";
 	margin-right: 0.5em;
 	margin-left: -19px;
-	color: #2c9720;
+	color: #1a8cff;
 }
 
 .mytheme .v-label-failure {
@@ -11880,11 +11880,11 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme .v-Notification.success, .mytheme .v-Notification.failure {
 	background: #fff;
 	color: #555;
-	border: 2px solid #2c9720;
+	border: 2px solid #1a8cff;
 }
 
 .mytheme .v-Notification.success .v-Notification-caption, .mytheme .v-Notification.failure .v-Notification-caption {
-	color: #2c9720;
+	color: #1a8cff;
 	font-weight: 400;
 }
 
@@ -12511,13 +12511,13 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .mytheme .dish-type {
-	color: #FF8C00;
+	color: #a6a6a6;
 	font-size: medium;
 	font-weight: bold;
 }
 
 .mytheme .dish-name {
-	color: #6A5ACD;
+	color: #0052cc;
 	font-size: xx-large;
 	font-weight: bold;
 }
@@ -12526,4 +12526,26 @@ div.v-layout.v-horizontal.v-widget {
 	color: #708090;
 	font-size: small;
 	font-weight: bold;
+	margin-left: 1%;
+}
+
+.mytheme .dish-detail-value {
+	color: #001433;
+	font-size: small;
+	font-weight: bold;
+}
+
+.mytheme .dish-ingredient {
+	margin-right: 5%;
+	font-size: medium;
+	font-weight: bold;
+	color: #404040;
+}
+
+.mytheme .recipe-search-button {
+	color: white;
+}
+
+.mytheme .details-container {
+	margin-top: 2%;
 }

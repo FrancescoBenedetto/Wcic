@@ -1,9 +1,12 @@
 package my.vaadin.app;
 
+import java.util.ArrayList;
+
 import com.vaadin.server.FontAwesome;
 import com.vaadin.shared.ui.Orientation;
 import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Slider;
 import com.vaadin.ui.TextField;
@@ -20,8 +23,13 @@ public class SearchToolsComponent extends VerticalLayout{
 	private void init() {
 		CssLayout searchBar = createSearchBar();
 		Slider slider = createNumberOfIngredientsSlider();
+		Button b = createSearchButton();
+		VerticalLayout cbox = createDishTypeCheckBox();
 		this.addComponent(searchBar);
 		this.addComponent(slider);
+		this.addComponent(cbox);
+		this.addComponent(b);
+		
 	}
 	
 	private CssLayout createSearchBar() {
@@ -43,5 +51,26 @@ public class SearchToolsComponent extends VerticalLayout{
 		Slider s = new Slider("select min # of ingredients:",1,5);
 		s.setStyleName("ingredients-slider");
 		return s;
+	}
+	
+	private Button createSearchButton() {
+		Button b = new Button("search recipes");
+		b.setStyleName(ValoTheme.BUTTON_FRIENDLY);
+		//b.addStyleName("recipe-search-button");
+		return b;
+	}
+	
+	private VerticalLayout createDishTypeCheckBox() {
+		ArrayList<String> dishTypes = new ArrayList<String>();
+		dishTypes.add("Primi Piatti");
+		dishTypes.add("Secondi Piatti");
+		dishTypes.add("Dessert");
+		VerticalLayout cbContainer = new VerticalLayout();
+		for(String type: dishTypes) {
+			CheckBox cb = new CheckBox(type);
+			cb.setValue(true);
+			cbContainer.addComponent(cb);
+		}
+		return cbContainer;
 	}
 }

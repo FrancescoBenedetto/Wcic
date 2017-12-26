@@ -31,6 +31,9 @@
 
 @import "../valo/valo.scss";
 
+$v-friendly-color: #1a8cff;
+
+
 @mixin mytheme {
   @include valo;
 
@@ -44,13 +47,13 @@
   }
   
   .dish-type {
-  	color: #FF8C00;
+  	color: #a6a6a6;
   	font-size: medium;
   	font-weight: bold;
   	}
   	
   .dish-name {
-  	color: #6A5ACD;
+  	color: #0052cc;
   	font-size: xx-large;
   	font-weight: bold;
   }
@@ -59,6 +62,28 @@
   	color: #708090;
   	font-size: small;
   	font-weight: bold;
+  	margin-left: 1%;
+  }
+  
+  .dish-detail-value {
+  	color: #001433;
+  	font-size: small;
+  	font-weight: bold;
+  }
+  
+  .dish-ingredient {
+  	margin-right: 5%;
+  	font-size: medium;
+  	font-weight: bold;
+  	color:  #404040;
+  }
+  
+  .recipe-search-button {
+  	color: white;
+  }
+  
+  .details-container {
+  	margin-top: 2%;
   }
   
 }

@@ -46,8 +46,10 @@ public class MyUI extends UI {
         
         HorizontalLayout header = new HeaderComponent();
         ContentComponent content = new ContentComponent();
+        FooterComponent footer = new FooterComponent();
         layout.addComponent(header);
         layout.addComponent(content);
+        layout.addComponent(footer);
         
         
         

@@ -66,6 +66,11 @@
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-themes</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.vaadin.addon</groupId>
+			<artifactId>pagination</artifactId>
+			<version>8.0.6</version>
+		</dependency>
 	</dependencies>
 
 	<build>

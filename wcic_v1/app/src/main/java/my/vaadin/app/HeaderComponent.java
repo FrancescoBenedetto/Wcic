@@ -4,6 +4,7 @@ import java.io.File;
 
 import com.vaadin.server.FileResource;
 import com.vaadin.server.VaadinService;
+import com.vaadin.server.Sizeable.Unit;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
@@ -52,10 +53,12 @@ public class HeaderComponent extends HorizontalLayout {
 
 		// Image as a file resource
 		FileResource resource = new FileResource(new File(
-		                        "src/main/webapp/VAADIN/themes/mytheme/favicon.ico"));
+		                        "src/main/webapp/VAADIN/themes/mytheme/chef_hat_1.jpeg"));
 
 		// Show the image in the application
 		Image image = new Image(null,resource);
+		image.setHeight(20, Unit.PERCENTAGE);
+		image.setWidth(20, Unit.PERCENTAGE);
 		
 		return image;
 
