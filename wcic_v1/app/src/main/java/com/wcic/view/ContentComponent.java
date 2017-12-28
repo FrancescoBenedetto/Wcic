@@ -1,6 +1,5 @@
-package my.vaadin.app;
+package com.wcic.view;
 
-import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.VerticalLayout;
 
 public class ContentComponent extends VerticalLayout {

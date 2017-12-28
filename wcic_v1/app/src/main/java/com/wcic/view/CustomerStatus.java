@@ -1,4 +1,4 @@
-package my.vaadin.app;
+package com.wcic.view;
 
 public enum CustomerStatus {
     ImportedLead, NotContacted, Contacted, Customer, ClosedLost

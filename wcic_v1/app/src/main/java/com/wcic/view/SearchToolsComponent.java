@@ -1,4 +1,4 @@
-package my.vaadin.app;
+package com.wcic.view;
 
 import java.util.ArrayList;
 

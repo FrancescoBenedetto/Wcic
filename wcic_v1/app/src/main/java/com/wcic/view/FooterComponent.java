@@ -1,4 +1,4 @@
-package my.vaadin.app;
+package com.wcic.view;
 
 import com.vaadin.addon.pagination.Pagination;
 import com.vaadin.addon.pagination.PaginationResource;

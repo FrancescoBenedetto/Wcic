@@ -1,8 +1,7 @@
-package my.vaadin.app;
+package com.wcic.view;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * A entity object, like in any other Java application. In a typical real world

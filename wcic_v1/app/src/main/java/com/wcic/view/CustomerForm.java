@@ -1,4 +1,4 @@
-package my.vaadin.app;
+package com.wcic.view;
 
 import com.vaadin.data.Binder;
 import com.vaadin.event.ShortcutAction.KeyCode;
