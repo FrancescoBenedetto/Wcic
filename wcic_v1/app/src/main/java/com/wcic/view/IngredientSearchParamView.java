@@ -6,9 +6,9 @@ import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.themes.ValoTheme;
 
-public class IngredientPanel extends CssLayout {
+public class IngredientSearchParamView extends CssLayout {
 
-	public IngredientPanel(String ingredientName) {
+	public IngredientSearchParamView(String ingredientName) {
 		super();
 		Panel ingredientNamePanel = new Panel(ingredientName);
 		ingredientNamePanel.setSizeUndefined();

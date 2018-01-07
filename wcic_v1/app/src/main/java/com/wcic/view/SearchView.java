@@ -8,16 +8,17 @@ import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
+import com.wcic.view.impl.SearchToolsViewImpl;
 
-public class SearchComponent extends HorizontalLayout {
+public class SearchView extends HorizontalLayout {
 
-	public SearchComponent() {
+	public SearchView() {
 		init();
 	}
 	
 	private void init() {
-		VerticalLayout ingredientsContainer = new IngredientsContainerComponent();
-		VerticalLayout searchToolsContainer = new SearchToolsComponent();
+		VerticalLayout ingredientsContainer = new IngredientSearchParamListView();
+		SearchToolsViewImpl searchToolsContainer = new SearchToolsViewImpl();
 
 		this.addComponent(searchToolsContainer);
 		this.addComponent(ingredientsContainer);

@@ -11,7 +11,7 @@ import com.vaadin.ui.Image;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.MenuBar.MenuItem;
 
-public class HeaderComponent extends HorizontalLayout {
+public class SearchPageHeaderView extends HorizontalLayout {
 	
 	/**
 	 * 
@@ -20,7 +20,7 @@ public class HeaderComponent extends HorizontalLayout {
 	MenuBar navBar;
 	MenuItem home, search, login;
     
-    public HeaderComponent() {
+    public SearchPageHeaderView() {
     	super();
     	setHeaderComponents();
     }

@@ -4,9 +4,9 @@ import com.vaadin.ui.VerticalLayout;
 import com.wcic.model.Dish;
 import com.wcic.model.Ingredient;
 
-public class ResultsContainer extends VerticalLayout {
+public class DishListView extends VerticalLayout {
 
-	public ResultsContainer() {
+	public DishListView() {
 		Dish firstDish = new Dish("Primi Piatti", "Short Name", "medium", "3", "10\'", "www.try.com/lasagna", "try");
 		firstDish.addIngredient(new Ingredient("cipolla"));
 		firstDish.addIngredient(new Ingredient("patata"));
@@ -27,8 +27,8 @@ public class ResultsContainer extends VerticalLayout {
 		secondDish.addIngredient(new Ingredient("rombo"));
 		secondDish.addIngredient(new Ingredient("patate"));
 		secondDish.addIngredient(new Ingredient("acciughe"));
-		this.addComponent(new ResultContainer(firstDish));
-		this.addComponent(new ResultContainer(secondDish));
+		this.addComponent(new DishView(firstDish));
+		this.addComponent(new DishView(secondDish));
 	}
 	
 }

@@ -15,14 +15,14 @@ import com.vaadin.ui.VerticalLayout;
 import com.wcic.model.Dish;
 import com.wcic.model.Ingredient;
 
-public class ResultContainer extends HorizontalLayout{
+public class DishView extends HorizontalLayout{
 	
 	private final String difficultyDetailImgLocation = "src/main/webapp/VAADIN/themes/mytheme/difficulty_lvl_1.png";
 	private final String personsDetailImgLocation = "src/main/webapp/VAADIN/themes/mytheme/persons.png";
 	private final String timeDetailImgLocation = "src/main/webapp/VAADIN/themes/mytheme/clock.png";
 
 	
-	public ResultContainer(Dish dish) {
+	public DishView(Dish dish) {
 		super();
 		this.setWidth(100, Unit.PERCENTAGE);
 		VerticalLayout dishInfoContainer = createDishInfoComponent(

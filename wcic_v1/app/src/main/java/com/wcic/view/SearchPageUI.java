@@ -30,23 +30,18 @@ import com.vaadin.ui.themes.ValoTheme;
  * overridden to add component to the user interface and initialize non-component functionality.
  */
 @Theme("mytheme")
-public class MyUI extends UI {
+public class SearchPageUI extends UI {
     
-    private CustomerService service = CustomerService.getInstance();
-    private Grid<Customer> grid = new Grid<>(Customer.class);
-    private TextField filterText = new TextField();
-    private CustomerForm form = new CustomerForm(this);
-
-    /* (non-Javadoc)
+      /* (non-Javadoc)
      * @see com.vaadin.ui.UI#init(com.vaadin.server.VaadinRequest)
      */
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
         
-        HorizontalLayout header = new HeaderComponent();
-        ContentComponent content = new ContentComponent();
-        FooterComponent footer = new FooterComponent();
+        HorizontalLayout header = new SearchPageHeaderView();
+        SearchPageBodyView content = new SearchPageBodyView();
+        SearchPageFooterView footer = new SearchPageFooterView();
         layout.addComponent(header);
         layout.addComponent(content);
         layout.addComponent(footer);
@@ -83,12 +78,10 @@ public class MyUI extends UI {
     }
 
     public void updateList() {
-        List<Customer> customers = service.findAll(filterText.getValue());
-        grid.setItems(customers);
-    }
+       }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
+    @VaadinServletConfiguration(ui = SearchPageUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
     }
 }

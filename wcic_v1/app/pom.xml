@@ -71,6 +71,11 @@
 			<artifactId>pagination</artifactId>
 			<version>8.0.6</version>
 		</dependency>
+		<dependency>
+		   <groupId>org.vaadin.addons</groupId>
+		   <artifactId>autocomplete</artifactId>
+		   <version>0.2.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>

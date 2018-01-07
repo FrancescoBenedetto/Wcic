@@ -5,11 +5,11 @@ import com.vaadin.addon.pagination.PaginationResource;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.HorizontalLayout;
 
-public class FooterComponent extends HorizontalLayout {
+public class SearchPageFooterView extends HorizontalLayout {
 
 	
 	
-	public FooterComponent() {
+	public SearchPageFooterView() {
 		this.setWidth(100, Unit.PERCENTAGE);
 		Pagination pager = createPager(50, 1, 10);
 		this.addComponent(pager);
