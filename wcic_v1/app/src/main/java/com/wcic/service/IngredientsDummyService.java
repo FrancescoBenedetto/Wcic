@@ -1,10 +1,12 @@
 package com.wcic.service;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.wcic.model.Ingredient;
 
-public class IngredientsDummyService {
+public class IngredientsDummyService implements IngredientService{
 
 	ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
 	
@@ -17,7 +19,10 @@ public class IngredientsDummyService {
 		this.ingredients.add(new Ingredient("prosciutto"));
 	}
 	
-	public ArrayList<Ingredient> getIngredients() {
-		return this.ingredients;
+	public ArrayList<Ingredient> getTopNMatchingIngredients(String pattern) {
+		return (ArrayList<Ingredient>) this.ingredients.stream()
+				.filter(i -> i.getName().toLowerCase().contains(pattern.toLowerCase()))
+				.limit(10)
+				.collect(Collectors.toList());
 	}
 }

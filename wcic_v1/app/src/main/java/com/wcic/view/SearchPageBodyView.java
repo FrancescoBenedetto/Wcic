@@ -1,6 +1,7 @@
 package com.wcic.view;
 
 import com.vaadin.ui.VerticalLayout;
+import com.wcic.view.impl.SearchViewImpl;
 
 public class SearchPageBodyView extends VerticalLayout {
 
@@ -15,7 +16,7 @@ public class SearchPageBodyView extends VerticalLayout {
 	}
 
 	private void init() {
-		SearchView sc = new SearchView();
+		SearchViewImpl sc = new SearchViewImpl();
 		DishListView rc = new DishListView();
 		this.addComponent(sc);
 		this.addComponent(rc);

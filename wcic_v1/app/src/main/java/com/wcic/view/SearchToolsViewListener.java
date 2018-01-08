@@ -1,6 +1,7 @@
 package com.wcic.view;
 
+import java.util.List;
+
 public interface SearchToolsViewListener {
 	
-	void ingredientNameChanged(String ingredientName);
 }
