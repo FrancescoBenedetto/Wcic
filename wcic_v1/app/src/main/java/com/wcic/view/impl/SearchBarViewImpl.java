@@ -37,7 +37,7 @@ public class SearchBarViewImpl extends CustomComponent implements SearchBarView 
 		ingredientSuggestions.setSuggestionDelay(500);
 		ingredientSuggestions.setSuggestionGenerator(listener::suggestIngredients);
 		ingredientSuggestions.addSuggestionSelectListener(event -> {
-		    event.getSelectedItem().ifPresent(Notification::show);
+		    this.listener.ingredientSelected(event.getSelectedItem().get());
 		});
 
 		clearTextButton = new Button(FontAwesome.TIMES);

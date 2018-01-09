@@ -1,10 +1,7 @@
 package com.wcic.presenter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import com.wcic.model.Ingredient;
 import com.wcic.service.IngredientService;
 import com.wcic.view.SearchBarView;
 import com.wcic.view.SearchBarViewListener;
@@ -13,7 +10,7 @@ public class SearchBarPresenter implements SearchBarViewListener {
 	
 	IngredientService service; 
 	SearchBarView view;
-	List<Ingredient> topNIngredients = new ArrayList<>();
+	SelectedIngredientListPresenter selectedIngPresenter;
 
 	public SearchBarPresenter(IngredientService service, SearchBarView view) {
 		this.service = service;
@@ -28,6 +25,14 @@ public class SearchBarPresenter implements SearchBarViewListener {
 				.map(i -> i.getName())
 				.limit(cap)
 				.collect(Collectors.toList());
+	}
+	
+	public void setSiblingPresenter(SelectedIngredientListPresenter selectedIngPresenter) {
+		this.selectedIngPresenter = selectedIngPresenter;
+	}
+	
+	public void ingredientSelected(String ingredientName) {
+		this.selectedIngPresenter.addIngredient(ingredientName);
 	}
 
 

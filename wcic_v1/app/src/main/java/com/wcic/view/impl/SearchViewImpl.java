@@ -11,9 +11,10 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 import com.wcic.factory.SearchToolsFactory;
 import com.wcic.presenter.SearchToolsPresenter;
+import com.wcic.presenter.SelectedIngredientListPresenter;
 import com.wcic.service.IngredientsDummyService;
-import com.wcic.view.IngredientSearchParamListView;
 import com.wcic.view.SearchToolsView;
+import com.wcic.view.SelectedIngredientListView;
 
 
 public class SearchViewImpl extends CustomComponent {
@@ -24,8 +25,9 @@ public class SearchViewImpl extends CustomComponent {
 	public SearchViewImpl() {
 		
 		baseLayout = new HorizontalLayout();
-		VerticalLayout ingredientsContainer = new IngredientSearchParamListView();
-		SearchToolsView searchToolsContainer = new SearchToolsFactory().buildSearchToolsComponent();
+		SelectedIngredientListViewImpl ingredientsContainer = new SelectedIngredientListViewImpl();
+		SelectedIngredientListPresenter ingContainerpresenter = new SelectedIngredientListPresenter(ingredientsContainer);
+		SearchToolsView searchToolsContainer = new SearchToolsFactory().buildSearchToolsComponent(ingContainerpresenter);
 
 		this.baseLayout.addComponent(searchToolsContainer);
 		this.baseLayout.addComponent(ingredientsContainer);

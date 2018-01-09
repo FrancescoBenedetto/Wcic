@@ -2,6 +2,7 @@ package com.wcic.factory;
 
 import com.wcic.presenter.SearchBarPresenter;
 import com.wcic.presenter.SearchToolsPresenter;
+import com.wcic.presenter.SelectedIngredientListPresenter;
 import com.wcic.service.IngredientService;
 import com.wcic.service.IngredientsDummyService;
 import com.wcic.view.SearchBarView;
@@ -21,9 +22,10 @@ public class SearchToolsFactory {
 		}
 	}
 	
-	public SearchToolsView buildSearchToolsComponent() {
+	public SearchToolsView buildSearchToolsComponent(SelectedIngredientListPresenter selectedIngsPresenter) {
 		SearchBarView searchBarView = new SearchBarViewImpl();
 		SearchBarViewListener searchBarViewPresenter = new SearchBarPresenter(service, searchBarView);
+		searchBarViewPresenter.setSiblingPresenter(selectedIngsPresenter);
 		SearchToolsView view = new SearchToolsViewImpl();
 		view.addComponent(searchBarView);
 		view.init();
