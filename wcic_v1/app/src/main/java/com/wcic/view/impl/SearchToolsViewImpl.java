@@ -2,43 +2,49 @@ package com.wcic.view.impl;
 
 import java.util.ArrayList;
 
-import org.vaadin.addons.autocomplete.AutocompleteExtension;
 
-import com.vaadin.server.FontAwesome;
-import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CheckBox;
-import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Slider;
-import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
+import com.wcic.presenter.SearchBarPresenter;
+import com.wcic.service.IngredientsDummyService;
+import com.wcic.view.SearchBarViewListener;
 import com.wcic.view.SearchToolsView;
 import com.wcic.view.SearchToolsViewListener;
 
 public class SearchToolsViewImpl extends CustomComponent
 implements SearchToolsView {
 
-	private SearchBar searchBar;
+
+	private static final long serialVersionUID = -3627823991707009190L;
+	/**
+	 * 
+	 */
+	@SuppressWarnings("unused")
 	private SearchToolsViewListener listener;
+	VerticalLayout searchToolsLayout;
 
 
 	public SearchToolsViewImpl() {
-		VerticalLayout searchToolsLayout = new VerticalLayout();
-		searchBar = new SearchBar();
-		searchBar.getsearchIngredientTextField()
-		.addValueChangeListener(
-				event -> listener.ingredientNameChanged(event.getValue())
-				);
+		searchToolsLayout = new VerticalLayout();		
+		this.setCompositionRoot(searchToolsLayout);
+	}
+	
+	public void init() {
 		Slider slider = createNumberOfIngredientsSlider();
 		Button b = createSearchButton();
 		VerticalLayout cbox = createDishTypeCheckBox();
-		searchToolsLayout.addComponent(searchBar);
 		searchToolsLayout.addComponent(slider);
 		searchToolsLayout.addComponent(cbox);
 		searchToolsLayout.addComponent(b);
-		this.setCompositionRoot(searchToolsLayout);
+	}
+	
+	public void addComponent(Component component) {
+		searchToolsLayout.addComponent(component);
 	}
 
 	private Slider createNumberOfIngredientsSlider() {
@@ -71,36 +77,5 @@ implements SearchToolsView {
 	@Override
 	public void setListener(SearchToolsViewListener listener) {
 		this.listener = listener;
-	}
-
-	private class SearchBar extends CustomComponent {
-
-		private TextField searchIngredientTextField;
-		private Button clearTextButton;
-
-		public SearchBar() {
-			searchIngredientTextField = new TextField();
-			searchIngredientTextField.setPlaceholder("Search an ingredient...");
-			searchIngredientTextField.setValueChangeMode(ValueChangeMode.LAZY);
-			
-			//watch https://github.com/wbadam/autocomplete-extension
-			AutocompleteExtension<String> ingredientSuggestions = new AutocompleteExtension<>(
-					searchIngredientTextField);
-			//ingredientSuggestions.setSuggestionGenerator(this::suggestPlanet);
-
-
-			clearTextButton = new Button(FontAwesome.TIMES);
-			clearTextButton.addClickListener(e -> searchIngredientTextField.clear());
-
-			CssLayout searchBarLayout = new CssLayout();
-			searchBarLayout.addComponents(searchIngredientTextField, clearTextButton);
-			searchBarLayout.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
-			this.setCompositionRoot(searchBarLayout);
-		}
-
-		public TextField getsearchIngredientTextField() {
-			return this.searchIngredientTextField;
-		}
-
 	}
 }
