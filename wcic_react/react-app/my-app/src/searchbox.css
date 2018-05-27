@@ -1,0 +1,26 @@
+.searchbox-input {
+  border-radius: '5px';
+}
+
+.searchbox-suggestionContainer {
+  width: 100%;
+}
+
+.searchbox-suggestionList {
+  width: 90%;
+  margin-left: 0px;
+  position: absolute;
+  z-index: 10;
+  background-color: white;
+}
+
+.searchbox-suggestion {
+  list-style-type: none;
+  cursor: pointer;
+  word-wrap: break-word;
+  border-bottom: solid 1px #e6e6e6;
+}
+
+.suggestion-highlighted {
+  background-color: #3399ff;
+}
