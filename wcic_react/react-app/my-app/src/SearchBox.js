@@ -9,35 +9,6 @@ const theme = {input: 'searchbox-input col-lg list-group-item',
                 suggestion: 'searchbox-suggestion',
                 suggestionHighlighted: 'suggestion-highlighted'
                 }
-const languages = [
-  {
-    name: 'C',
-    year: 1972
-  },
-  {
-    name: 'Ciao',
-    year: 1203
-  },
-  {name: 'Ciccio'},
-  {name: 'Cow'},
-  {name: 'CCC'},
-  {name: 'CASDASd'},
-  {name: 'CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC'},
-  {
-    name: 'Elm',
-    year: 2012
-  }
-];
-
-// Teach Autosuggest how to calculate suggestions for any given input value.
-const getSuggestions = value => {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
-
-  return inputLength === 0 ? [] : languages.filter(lang =>
-    lang.name.toLowerCase().slice(0, inputLength) === inputValue
-  );
-};
 
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
@@ -55,6 +26,7 @@ class SearchBox extends React.Component {
   constructor(props) {
       super(props);
       this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
+      this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
       // Autosuggest is a controlled component.
       // This means that you need to provide an input value
       // and an onChange handler that updates this value (see below).
@@ -75,9 +47,18 @@ class SearchBox extends React.Component {
       // Autosuggest will call this function every time you need to update suggestions.
       // You already implemented this logic above, so just use it.
       onSuggestionsFetchRequested = ({ value }) => {
-        this.setState({
-          suggestions: getSuggestions(value)
-        });
+        const inputValue = value.trim().toLowerCase();
+        const inputLength = inputValue.length;
+
+        inputLength === 0 ? this.setState({suggestions:[]}):
+           fetch("http://localhost:8080/ingredient/search/nameStartingWith?term="+inputValue+"&page=1&size=10")
+            .then(response => response.json() )
+            .then(
+              parsedJson =>
+              {
+                this.setState({suggestions: parsedJson._embedded.ingredient});
+              }
+            );
       };
 
       // Autosuggest will call this function every time you need to clear suggestions.

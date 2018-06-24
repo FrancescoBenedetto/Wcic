@@ -4,58 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {List, AutoSizer, InfiniteLoader} from 'react-virtualized';
 
 
-/*
-let list = [
-  {name:"Spaghetti all'amatriciana",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Pasta alla norma",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Pasta e ceci",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Merluzzo e patate ",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Spaghetti all'amatriciana 1",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Pasta alla norma 1",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Pasta e ceci 1",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Merluzzo e patate 1",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Spaghetti all'amatriciana 2",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Pasta alla norma 2",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Pasta e ceci 2",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Merluzzo e patate 2",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Spaghetti all'amatriciana 3",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Pasta alla norma 3",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Pasta e ceci 3",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Merluzzo e patate 3",cost:"medio", difficulty:"media", time:"2'"}
-]
-
-let list2 = [
-  {name:"Spaghetti all'amatriciana 4",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Pasta alla norma 4",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Pasta e ceci 4",cost:"medio", difficulty:"media", time:"2'"},
-  {name:"Merluzzo e patate 4",cost:"medio", difficulty:"media", time:"2'"}]
-*/
-
 class RecipeList extends React.Component {
   constructor(props){
     super(props);
     this._rowRenderer = this._rowRenderer.bind(this);
   }
-/*
-  render(){
-    let recipes = list.map( (recipe) =>
-      <li class="list-group-item">
-        <Recipe
-          name={recipe.name}
-          difficulty={recipe.difficulty}
-          time={recipe.time}
-          cost={recipe.cost}
-          >
-        </Recipe>
-      </li>
-  )
-    return (
-      <ul class="list-group recipes-list">
-          {recipes}
-      </ul>
-    )
-  }
-  */
+
   _rowRenderer({
   index,       // Index of row
   isScrolling, // The List is currently being scrolled
@@ -94,7 +48,7 @@ class RecipeList extends React.Component {
     <AutoSizer disableHeight>
       {({width}) => (
       <List
-        rowCount={100}
+        rowCount={this.props.rowCount}
         width={width}
         height={500}
         rowHeight={86}

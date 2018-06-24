@@ -38,6 +38,7 @@ class SliderWrapper extends Component {
           max={this.props.ingredientsNumber}
           //dots={true}
           handle={handle}
+          onChange={this.props.onSliderValueChange}
           >
         </Slider>
       </div>

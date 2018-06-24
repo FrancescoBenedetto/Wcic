@@ -13,6 +13,7 @@ class RecipeFinderFiltersHandler extends React.Component {
         <div class="slider-container">
           <SliderWrapper
             ingredientsNumber={this.props.ingredientsNumber}
+            onSliderValueChange={this.props.onSliderValueChange}
             >
             </SliderWrapper>
         </div>
