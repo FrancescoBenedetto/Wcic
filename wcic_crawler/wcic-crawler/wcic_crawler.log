@@ -1,0 +1,9 @@
+2018-10-24 20:07:29,990 WARN [Crawler 1] e.u.i.c.c.WebCrawler [WebCrawler.java:251] Unhandled exception while fetching https://www.giallozafferano.it/staff/chisiamo.html: null
+2018-10-24 20:11:09,329 WARN [Crawler 1] e.u.i.c.c.WebCrawler [WebCrawler.java:251] Unhandled exception while fetching https://www.giallozafferano.it/staff/chisiamo.html: null
+2018-10-24 20:11:26,731 WARN [Crawler 1] e.u.i.c.c.WebCrawler [WebCrawler.java:251] Unhandled exception while fetching https://www.giallozafferano.it/static/disclaimer.html: null
+2018-10-24 20:13:39,442 WARN [Crawler 5] e.u.i.c.c.WebCrawler [WebCrawler.java:213] Skipping URL: https://ricette.giallozafferano.it/Coppa-al-%20mascarpone-con-%20cioccolato-e-%20meringhe.html, StatusCode: 404, text/html, Not Found
+2018-10-24 20:16:53,227 WARN [Crawler 2] e.u.i.c.c.WebCrawler [WebCrawler.java:213] Skipping URL: https://www.giallozafferano.it/Primi/pasta/facili-e-veloci/, StatusCode: 404, text/html, Not Found
+2018-10-24 20:17:02,226 WARN [Crawler 2] e.u.i.c.c.WebCrawler [WebCrawler.java:213] Skipping URL: https://www.giallozafferano.it/Primi/pasta/Sfiziosi/, StatusCode: 404, text/html, Not Found
+2018-10-24 20:17:11,999 WARN [Crawler 2] e.u.i.c.c.WebCrawler [WebCrawler.java:213] Skipping URL: https://www.giallozafferano.it/Primi/pasta/grandi-classici/, StatusCode: 404, text/html, Not Found
+2018-10-24 20:17:16,803 WARN [Crawler 2] e.u.i.c.c.WebCrawler [WebCrawler.java:213] Skipping URL: https://www.giallozafferano.it/Primi/pasta/Al-forno/, StatusCode: 404, text/html, Not Found
+2018-10-24 20:17:18,229 WARN [Crawler 2] e.u.i.c.c.WebCrawler [WebCrawler.java:213] Skipping URL: https://www.giallozafferano.it/Primi/pasta/Vegetariani/, StatusCode: 404, text/html, Not Found
