@@ -1,4 +1,4 @@
-package com.francesco_benedetto.wcic_crawler;
+package com.fbenedet.wcic.spider;
 
 import java.io.FileInputStream;
 import java.io.IOException;
